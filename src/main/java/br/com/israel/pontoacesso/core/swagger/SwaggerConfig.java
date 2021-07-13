@@ -1,4 +1,4 @@
-package br.com.israel.pontoacesso.swagger;
+package br.com.israel.pontoacesso.core.swagger;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
