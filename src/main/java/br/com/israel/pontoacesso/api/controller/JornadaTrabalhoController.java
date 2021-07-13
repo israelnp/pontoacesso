@@ -1,4 +1,4 @@
-package br.com.israel.pontoacesso.controller;
+package br.com.israel.pontoacesso.api.controller;
 
 import br.com.israel.pontoacesso.domain.model.JornadaTrabalho;
 import br.com.israel.pontoacesso.domain.service.JornadaService;
