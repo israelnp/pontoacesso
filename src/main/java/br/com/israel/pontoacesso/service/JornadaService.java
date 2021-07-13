@@ -5,6 +5,7 @@ import br.com.israel.pontoacesso.repository.JornadaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
+import java.util.Optional;
 
 public class JornadaService {
 
@@ -23,5 +24,8 @@ public class JornadaService {
         return this.jornadaRepository.findAll();
     }
 
+    public Optional<JornadaTrabalho> buscarJornadaPorId(Long jornadaId){
+        return this.jornadaRepository.findById(jornadaId);
+    }
 
 }
