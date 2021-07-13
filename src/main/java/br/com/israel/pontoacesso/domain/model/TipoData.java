@@ -1,4 +1,4 @@
-package br.com.israel.pontoacesso.model;
+package br.com.israel.pontoacesso.domain.model;
 
 import lombok.*;
 
@@ -12,7 +12,7 @@ import javax.persistence.Id;
 @EqualsAndHashCode
 @Builder
 @Entity
-public class CategoriaUsuario {
+public class TipoData {
 
     @Id
     private long id;

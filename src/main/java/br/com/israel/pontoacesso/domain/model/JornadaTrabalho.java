@@ -1,8 +1,9 @@
-package br.com.israel.pontoacesso.model;
+package br.com.israel.pontoacesso.domain.model;
 
 import lombok.*;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Getter
@@ -12,9 +13,10 @@ import javax.persistence.Id;
 @EqualsAndHashCode
 @Builder
 @Entity
-public class TipoData {
+public class JornadaTrabalho {
 
     @Id
+    @GeneratedValue
     private long id;
     private String descricao;
 }

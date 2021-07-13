@@ -1,12 +1,9 @@
-package br.com.israel.pontoacesso.model;
+package br.com.israel.pontoacesso.domain.model;
 
 import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import java.time.LocalDateTime;
-
 
 @Getter
 @Setter
@@ -15,12 +12,15 @@ import java.time.LocalDateTime;
 @EqualsAndHashCode
 @Builder
 @Entity
-public class Calendario {
+public class Empresa {
 
     @Id
     private Long id;
-    @ManyToOne
-    private TipoData tipoData;
     private String descricao;
-    private LocalDateTime dataEspecial;
+    private String cnpj;
+    private String endereco;
+    private String bairo;
+    private String cidade;
+    private String estado;
+    private String telefone;
 }

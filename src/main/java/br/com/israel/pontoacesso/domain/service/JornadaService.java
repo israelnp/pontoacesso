@@ -1,7 +1,7 @@
-package br.com.israel.pontoacesso.service;
+package br.com.israel.pontoacesso.domain.service;
 
-import br.com.israel.pontoacesso.model.JornadaTrabalho;
-import br.com.israel.pontoacesso.repository.JornadaRepository;
+import br.com.israel.pontoacesso.domain.model.JornadaTrabalho;
+import br.com.israel.pontoacesso.domain.repository.JornadaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

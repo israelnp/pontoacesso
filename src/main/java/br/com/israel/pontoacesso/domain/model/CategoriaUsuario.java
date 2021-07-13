@@ -1,10 +1,9 @@
-package br.com.israel.pontoacesso.model;
+package br.com.israel.pontoacesso.domain.model;
 
 import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 
 @Getter
 @Setter
@@ -13,11 +12,9 @@ import javax.persistence.ManyToOne;
 @EqualsAndHashCode
 @Builder
 @Entity
-public class Localidade {
+public class CategoriaUsuario {
 
     @Id
-    private  long id;
-    @ManyToOne
-    private NivelAcesso nivelAcesso;
+    private long id;
     private String descricao;
 }

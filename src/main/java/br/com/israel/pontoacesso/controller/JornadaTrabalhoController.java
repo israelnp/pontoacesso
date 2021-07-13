@@ -1,7 +1,7 @@
 package br.com.israel.pontoacesso.controller;
 
-import br.com.israel.pontoacesso.model.JornadaTrabalho;
-import br.com.israel.pontoacesso.service.JornadaService;
+import br.com.israel.pontoacesso.domain.model.JornadaTrabalho;
+import br.com.israel.pontoacesso.domain.service.JornadaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
