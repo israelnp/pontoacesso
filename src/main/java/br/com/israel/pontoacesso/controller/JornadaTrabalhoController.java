@@ -31,9 +31,10 @@ public class JornadaTrabalhoController {
         return this.jornadaService.buscarTodasJornadas();
     }
 
-    @GetMapping("/jornadaId")
+    @GetMapping("/{jornadaId}")
     public ResponseEntity<JornadaTrabalho> buscarJornadaDeTrabalhoPorId(@PathVariable Long jornadaId){
-        return ResponseEntity.ok(this.jornadaService.buscarJornadaPorId(jornadaId).orElseThrow(() -> new NoSuchElementException("Não Encontrado!")));
+        return ResponseEntity.ok(this.jornadaService.buscarJornadaPorId(jornadaId)
+                .orElseThrow(() -> new NoSuchElementException("Não Encontrado!")));
     }
 
     @PutMapping
@@ -41,7 +42,7 @@ public class JornadaTrabalhoController {
         return this.jornadaService.modificarJornada(jornadaTrabalho);
     }
 
-    @DeleteMapping("/jornadaId")
+    @DeleteMapping("/{jornadaId}")
     public ResponseEntity removerJornadaDeTrabalhoPorId(@PathVariable Long jornadaId){
         try {
             jornadaService.removerJornadaPorId(jornadaId);
