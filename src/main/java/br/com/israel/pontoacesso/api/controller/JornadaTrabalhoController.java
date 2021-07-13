@@ -1,14 +1,13 @@
 package br.com.israel.pontoacesso.api.controller;
 
+import br.com.israel.pontoacesso.domain.exception.JornadaTrabalhoNaoEncontradaException;
+import br.com.israel.pontoacesso.domain.exception.NegocioException;
 import br.com.israel.pontoacesso.domain.model.JornadaTrabalho;
 import br.com.israel.pontoacesso.domain.service.JornadaService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
-import java.util.NoSuchElementException;
-
 
 @RestController
 @RequestMapping("/jornada")
@@ -16,13 +15,15 @@ public class JornadaTrabalhoController {
 
     JornadaService jornadaService;
 
+
     @Autowired
     public JornadaTrabalhoController(JornadaService jornadaService) {
         this.jornadaService = jornadaService;
     }
 
     @PostMapping
-    public JornadaTrabalho salvar(@RequestBody JornadaTrabalho jornadaTrabalho){
+    @ResponseStatus(HttpStatus.CREATED)
+    public JornadaTrabalho salvarJornada(@RequestBody JornadaTrabalho jornadaTrabalho){
         return this.jornadaService.salvarJornada(jornadaTrabalho);
     }
 
@@ -32,23 +33,28 @@ public class JornadaTrabalhoController {
     }
 
     @GetMapping("/{jornadaId}")
-    public ResponseEntity<JornadaTrabalho> buscarJornadaDeTrabalhoPorId(@PathVariable Long jornadaId){
-        return ResponseEntity.ok(this.jornadaService.buscarJornadaPorId(jornadaId)
-                .orElseThrow(() -> new NoSuchElementException("Não Encontrado!")));
+    public JornadaTrabalho buscarJornadaDeTrabalhoPorId(@PathVariable Long jornadaId){
+        return this.jornadaService.buscarJornadaPorId(jornadaId);
     }
 
     @PutMapping
     public JornadaTrabalho modificarJornadaDeTrabalho(@RequestBody JornadaTrabalho jornadaTrabalho){
-        return this.jornadaService.modificarJornada(jornadaTrabalho);
+        try {
+            JornadaTrabalho jornadaAtual = this.jornadaService.buscarJornadaPorId(jornadaTrabalho.getId());
+
+            jornadaAtual.setDescricao(jornadaTrabalho.getDescricao());
+
+            jornadaAtual = this.jornadaService.salvarJornada(jornadaAtual);
+
+            return jornadaAtual;
+        } catch (JornadaTrabalhoNaoEncontradaException e) {
+            throw new NegocioException(e.getMessage(), e);
+        }
     }
 
     @DeleteMapping("/{jornadaId}")
-    public ResponseEntity removerJornadaDeTrabalhoPorId(@PathVariable Long jornadaId){
-        try {
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void removerJornadaDeTrabalhoPorId(@PathVariable Long jornadaId){
             jornadaService.removerJornadaPorId(jornadaId);
-        }catch (Exception e){
-           e.printStackTrace();
-        }
-        return (ResponseEntity<JornadaTrabalho>) ResponseEntity.ok();
     }
 }
