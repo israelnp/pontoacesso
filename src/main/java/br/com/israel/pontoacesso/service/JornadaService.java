@@ -28,4 +28,8 @@ public class JornadaService {
         return this.jornadaRepository.findById(jornadaId);
     }
 
+    public JornadaTrabalho modificarJornada(JornadaTrabalho jornadaTrabalho){
+        return this.jornadaRepository.save(jornadaTrabalho);
+    }
+
 }
