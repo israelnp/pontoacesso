@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+
 @RestController
 @RequestMapping("/jornada")
 public class JornadaTrabalhoController {
@@ -31,7 +32,12 @@ public class JornadaTrabalhoController {
     }
 
     @GetMapping("/jornadaId")
-    public ResponseEntity<JornadaTrabalho> buscarTodasJornadasDeTrabalho(@PathVariable Long jornadaId){
+    public ResponseEntity<JornadaTrabalho> buscarJornadaDeTrabalhoPorId(@PathVariable Long jornadaId){
         return ResponseEntity.ok(this.jornadaService.buscarJornadaPorId(jornadaId).orElseThrow(() -> new NoSuchElementException("Não Encontrado!")));
+    }
+
+    @PostMapping
+    public JornadaTrabalho modificarJornadaDeTrabalho(@RequestBody JornadaTrabalho jornadaTrabalho){
+        return this.jornadaService.modificarJornada(jornadaTrabalho);
     }
 }
