@@ -13,7 +13,7 @@ public class JornadaService {
         this.jornadaRepository = jornadaRepository;
     }
 
-    public JornadaTrabalho salvar(JornadaTrabalho jornadaTrabalho){
+    public JornadaTrabalho salvarJornada(JornadaTrabalho jornadaTrabalho){
         return this.jornadaRepository.save(jornadaTrabalho);
     }
 
