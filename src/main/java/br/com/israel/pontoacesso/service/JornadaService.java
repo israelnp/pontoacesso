@@ -32,4 +32,8 @@ public class JornadaService {
         return this.jornadaRepository.save(jornadaTrabalho);
     }
 
+    public void removerJornadaPorId(Long jornadaId){
+         this.jornadaRepository.deleteById(jornadaId);
+    }
+
 }
